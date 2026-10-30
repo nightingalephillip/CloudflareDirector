@@ -196,7 +196,7 @@ export default function C2Panel({ chain, setDraft, saveChain, run, notify, statu
           <option value="tunnel">Cloudflare Tunnel — listener never exposed publicly</option>
         </select>
         <div className="hint">
-          Tunnel mode is the safer default (same as the reference design): the listener is only reachable through the
+          Tunnel mode is the safer default: the listener is only reachable through the
           tunnel and the worker stays behind Cloudflare's edge.
         </div>
       </div>

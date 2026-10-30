@@ -1,7 +1,7 @@
 import { requireHop1 } from './common.js';
 
 // Havoc .yaotl profile — Listener block pointing at hop 1.
-// Structure follows the reference redirector's demo-profile.yaotl.
+// Structure follows Havoc's standard .yaotl profile format.
 export function build(chain, settings, options = {}) {
   const h = requireHop1(chain, settings, options);
   const killdate = options.killdate ? `KillDate: "${options.killdate}"` : '';
