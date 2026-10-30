@@ -1,0 +1,27 @@
+{
+  "name": "cf-redirector-studio",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cloudflare C2 redirector chain builder with route visualization",
+  "engines": {
+    "node": ">=18.17"
+  },
+  "scripts": {
+    "dev": "node server/index.js --dev",
+    "dev:api": "node server/index.js --dev",
+    "dev:web": "vite",
+    "build": "vite build",
+    "start": "node server/index.js"
+  },
+  "dependencies": {
+    "@xyflow/react": "^12.3.5",
+    "express": "^4.21.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
