@@ -1,4 +1,4 @@
-<p align="center"><img src="web/public/nightingale.png" width="110" alt="Redirector Studio logo"></p>
+<p align="center"><img src="web/public/nightingale-badge.png" width="110" alt="Redirector Studio logo"></p>
 
 # Redirector Studio
 

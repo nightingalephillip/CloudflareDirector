@@ -360,18 +360,7 @@ export default function App() {
     <div className="app">
       <div className="topbar">
         <div className="title">
-          <img
-            src="/nightingale.png"
-            alt="Redirector Studio logo"
-            style={{
-              width: 24,
-              height: 24,
-              padding: 3,
-              boxSizing: 'border-box',
-              borderRadius: 6,
-              background: '#e9edf3',
-            }}
-          />
+          <img src="/nightingale.png" alt="Redirector Studio logo" style={{ width: 32, height: 32 }} />
           Redirector Studio
         </div>
         {chain && (
