@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "description": "Cloudflare C2 redirector chain builder with route visualization",
+  "license": "GPL-3.0",
   "engines": {
     "node": ">=18.17"
   },

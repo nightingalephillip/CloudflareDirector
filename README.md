@@ -246,4 +246,10 @@ returned by `GET`. `GET /api/doctor` without `accountId` checks the primary.
 - Probe results are request-scoped — no continuous monitoring yet.
 - Deploy/teardown require your real API token; nothing is mocked at runtime.
 
+## License
+
+Copyright (C) 2026 nightingalephillip. This project is licensed under the [GNU GPL v3](LICENSE) —
+you may use, modify, and redistribute it under those terms, with derivatives kept under the same
+license.
+
 *For authorized red team infrastructure only.*
