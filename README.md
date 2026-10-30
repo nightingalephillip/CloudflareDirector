@@ -11,6 +11,36 @@ Implant ──▶ Hop 1 ──▶ Hop 2 ──▶ Hop 3 ──▶ C2
          header     header     header
 ```
 
+## Screenshots
+
+*(all data below is generated example data — the tool ships with zero state)*
+
+**The whole operation on one canvas** — a shared implant node feeding both lanes (listener + stager),
+disposable burner fronts on hop 1, backbones on the primary, tunnel C2s, per-hop `@account` badges,
+`fetch →` labels on cross-account legs, and click-to-copy URLs:
+
+![Operation canvas — implant, two lanes, hop chains and tunnels](docs/screenshots/canvas.png)
+
+**Hop config** — auto-generated secrets (rotate anytime), secret header or path-token gating, exposure,
+gate-failure behavior, and disguise page:
+
+![Hop panel — secret, exposure, gate and disguise settings](docs/screenshots/hop-panel.png)
+
+**The C2 node** — the exact payload URL (hop 1's secret rides as the first path segment), tunnel
+provisioning, the cloudflared ingress target, and the run command for the C2 box:
+
+![C2 panel — payload URL and tunnel configuration](docs/screenshots/c2-panel.png)
+
+**Profile export** — Generic HTTP, Havoc, Mythic, or Sliver profiles pointed at hop 1, with ready-to-paste
+build commands (the listener port follows the chain's tunnel/local-service config):
+
+![Export modal — Sliver HTTP C2 profile and commands](docs/screenshots/export-modal.png)
+
+**Accounts** — mark a burner, run the token doctor per account, pick default zones; the required token
+permission list is built in:
+
+![Settings — accounts, burner marking and token doctor](docs/screenshots/settings.png)
+
 ## Features
 
 - **1–3 hops per chain**, multiple named chains (one per listener/operation)
