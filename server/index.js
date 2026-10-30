@@ -54,13 +54,13 @@ if (!dev && fs.existsSync(dist)) {
   app.get('/', (req, res) => {
     res
       .status(200)
-      .send('Redirector Studio API is running. Build the UI with `npm run build` or use `npm run dev`.');
+      .send('CloudflareDirector API is running. Build the UI with `npm run build` or use `npm run dev`.');
   });
 }
 
 app.listen(port, host, () => {
   const where = `http://${loopback ? '127.0.0.1' : host}:${port}`;
-  console.log(`Redirector Studio ${dev ? '(dev)' : ''} on ${where}`);
+  console.log(`CloudflareDirector ${dev ? '(dev)' : ''} on ${where}`);
   if (dev) console.log('UI dev server: npm run dev:web (Vite on :5173, proxies /api here)');
   if (!loopback) console.log('Remote mode: session token required on every API call.');
 });

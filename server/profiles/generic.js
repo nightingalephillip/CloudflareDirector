@@ -8,7 +8,7 @@ export function build(chain, settings, options = {}) {
   const content = JSON.stringify(
     {
       _meta: {
-        tool: 'cf-redirector-studio',
+        tool: 'cloudflaredirector',
         chain: chain.name,
         generated: new Date().toISOString(),
         note: 'Point any HTTP(S) C2 listener config at callback_url. The secret header must be sent on every request.',

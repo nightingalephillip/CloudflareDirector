@@ -360,8 +360,8 @@ export default function App() {
     <div className="app">
       <div className="topbar">
         <div className="title">
-          <img src="/nightingale.png" alt="Redirector Studio logo" style={{ width: 32, height: 32 }} />
-          Redirector Studio
+          <img src="/nightingale.png" alt="CloudflareDirector logo" style={{ width: 32, height: 32 }} />
+          CloudflareDirector
         </div>
         {chain && (
           <Toolbar

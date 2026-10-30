@@ -1,6 +1,6 @@
-<p align="center"><img src="web/public/nightingale-badge.png" width="110" alt="Redirector Studio logo"></p>
+<p align="center"><img src="web/public/nightingale-badge.png" width="110" alt="CloudflareDirector logo"></p>
 
-# Redirector Studio
+# CloudflareDirector
 
 A local web app that builds, deploys, and **visualizes chained Cloudflare Worker redirectors** for C2 traffic —
 Workers, service bindings, and cloudflared, wrapped in a GUI with a live route graph.

@@ -1,5 +1,5 @@
 {
-  "name": "cf-redirector-studio",
+  "name": "cloudflaredirector",
   "version": "0.1.0",
   "private": true,
   "type": "module",
