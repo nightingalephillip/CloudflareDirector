@@ -37,8 +37,7 @@ body {
   background: var(--bg2);
   border-bottom: 1px solid var(--line);
 }
-.topbar .title { font-weight: 700; letter-spacing: 0.02em; }
-.topbar .title span { color: var(--accent); }
+.topbar .title { font-weight: 700; letter-spacing: 0.02em; display: flex; align-items: center; gap: 8px; }
 .topbar .spacer { flex: 1; }
 .btn {
   background: var(--panel);

@@ -360,7 +360,19 @@ export default function App() {
     <div className="app">
       <div className="topbar">
         <div className="title">
-          <span style={{ color: 'var(--accent)' }}>◤</span> Redirector Studio
+          <img
+            src="/nightingale.png"
+            alt="Redirector Studio logo"
+            style={{
+              width: 24,
+              height: 24,
+              padding: 3,
+              boxSizing: 'border-box',
+              borderRadius: 6,
+              background: '#e9edf3',
+            }}
+          />
+          Redirector Studio
         </div>
         {chain && (
           <Toolbar

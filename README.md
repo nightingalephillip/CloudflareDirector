@@ -1,3 +1,5 @@
+<p align="center"><img src="web/public/nightingale.png" width="110" alt="Redirector Studio logo"></p>
+
 # Redirector Studio
 
 A local web app that builds, deploys, and **visualizes chained Cloudflare Worker redirectors** for C2 traffic —
