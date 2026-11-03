@@ -145,36 +145,7 @@ run). Account placement is **automatic and positional** — there is no per-hop 
      (keep it alive in tmux/screen; to make it a boot-persistent service instead use
      `cloudflared service install <token>` on a fresh box, or a hand-written systemd unit when one
      already runs — the installer refuses a second service per box). The
-     proxied CNAME, tunnel, and remote ingress config are all created via the API. For a Mythic setup the
-     listener lane points at the Mythic listener port and the stager lane at the staging port — both can
-     share one tunnel/connector with different hostnames.
-   - **Two provisioned tunnels on one box:** the systemd installer only ever writes a single
-     `cloudflared.service` — a second `service install` refuses with *"cloudflared service is already
-     installed"*. Run the second tunnel as its own unit instead (never `service uninstall` the running
-     one — that kills the first tunnel):
-
-     ```bash
-     sudo tee /etc/systemd/system/cloudflared-listener.service >/dev/null <<'EOF'
-     [Unit]
-     Description=cloudflared tunnel (listener)
-     After=network.target
-     Wants=network-online.target
-
-     [Service]
-     TimeoutStartSec=0
-     Type=notify
-     ExecStart=/usr/bin/cloudflared --no-autoupdate tunnel run --token PASTE_TOKEN_HERE
-     Restart=on-failure
-     RestartSec=5s
-
-     [Install]
-     WantedBy=multi-user.target
-     EOF
-     sudo systemctl daemon-reload && sudo systemctl enable --now cloudflared-listener
-     ```
-
-     Paste the second lane's token from its C2 panel (adjust the binary path to `which cloudflared`).
-     The alternative shape is one shared tunnel whose ingress lists both hostnames → both local services.
+     proxied CNAME, tunnel, and remote ingress config are all created via the API.
 4. **Deploy all** (or per-hop via the node panel — redeploys that hop plus everything upstream).
 5. **Test path** — green/red per hop on the edges, plus round-trip latency. The probe header is stripped
    before the listener sees it and never affects real traffic.
@@ -217,26 +188,6 @@ State (settings, chains, secrets) lives in `data/state.json` (gitignored, chmod 
   `X-Session-Token` header (the UI prompts for it). **Put it behind Tailscale/WireGuard**; do not expose it
   raw — it holds your Cloudflare credentials.
 - No telemetry, no external calls except to api.cloudflare.com.
-
-## API (for scripting)
-
-```
-GET/PUT /api/settings          GET /api/doctor?accountId=
-GET/POST /api/chains           GET/PUT/DELETE /api/chains/:id
-POST /api/chains/:id/deploy    {onlyIndex?}
-POST /api/chains/:id/destroy|quarantine|release|probe|validate|duplicate
-POST /api/chains/:id/hops/:hopId/rotate
-POST /api/chains/:id/tunnel/provision|remove
-GET  /api/chains/:id/status
-POST /api/chains/:id/export    {framework, options:{includeSecrets, killdate}}
-POST /api/chains/import
-POST /api/operations           {name} -> creates the op + listener/stager lanes
-DELETE /api/operations/:id     ungroups only — chains become standalone, workers untouched
-```
-
-`PUT /api/settings` takes `{accounts: [{id, label, accountId, apiToken, workersDevSubdomain, zoneId}]}` —
-the first entry is the default account; an empty `apiToken` keeps the stored one, and tokens are never
-returned by `GET`. `GET /api/doctor` without `accountId` checks the primary.
 
 ## Known limits / roadmap
 
