@@ -178,7 +178,7 @@ Every hop runs the same worker source (`worker/hop-template.js`); per-hop config
 - All upstream fetches are wrapped: any throw or Cloudflare infra status (502/503/504/52x/530) returns the
   disguise page instead of a fingerprintable error page
 
-State (settings, chains, secrets) lives in `data/state.json` (gitignored, chmod 600 where applicable).
+State (settings, chains, secrets) lives in `data/state.json`.
 
 ## Security notes
 
